@@ -8,19 +8,6 @@ int main() {
   for (b = 0; b < a; b++) {
     scanf("%d", &ash[b]);
   }
-  // Sorting because binary search always follows ascending order
-  for (b = 0; b < a; b++) {
-    for (c = 0; c < a - b - 1; c++) {
-      if (ash[c] > ash[c + 1]) {
-        d = ash[c];
-        ash[c] = ash[c + 1];
-        ash[c + 1] = d;
-      }
-    }
-  }
-  for (b = 0; b < a; b++) {
-   // printf("%d\t", ash[b]);
-  }
   printf("Enter searching Elements : ");
   scanf("%d", &e);
   m = 0;
