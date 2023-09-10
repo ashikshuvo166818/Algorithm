@@ -1,0 +1,85 @@
+#include <stdio.h>
+
+// Define a function to find the maximum of two integers.
+int max(int a, int b)
+{
+    if (a > b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+
+// Define a function to input an array of weights.
+void input(int weight[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &weight[i]);
+    }
+}
+
+// Define a function to display an array of integers.
+void show(int a[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d\t", a[i]);
+    }
+}
+
+// Implement the 0/1 Knapsack algorithm.
+int knapsack(int weight[], int profit[], int net_weight, int n)
+{
+    // Create a table to store intermediate results.
+    int knaptable[n + 1][net_weight + 1];
+
+    // Initialize the table with zeros.
+    for (int i = 0; i <= n; i++)
+    {
+        for (int j = 0; j <= net_weight; j++)
+        {
+            if (i == 0 || j == 0)
+            {
+                knaptable[i][j] = 0;
+            }
+            else if (j < weight[i - 1])
+            {
+                // If the current weight is greater than the current capacity,
+                // copy the value from the row above.
+                knaptable[i][j] = knaptable[i - 1][j];
+            }
+            else
+            {
+                // Calculate the maximum value by considering or excluding the current item.
+                knaptable[i][j] = max(knaptable[i - 1][j], knaptable[i - 1][j - weight[i - 1]] + profit[i - 1]);
+            }
+        }
+    }
+
+    // The final cell of the table contains the maximum achievable profit.
+    return knaptable[n][net_weight];
+}
+
+int main()
+{
+    int n, net;
+    printf("Enter size: ");
+    scanf("%d", &n);
+
+    int weight[n], profit[n];
+    printf("Enter Weights list: ");
+    input(weight, n);
+    printf("Enter Profit list: ");
+    input(profit, n);
+
+    printf("Enter Net_weight (Bag's capacity): ");
+    scanf("%d", &net);
+
+    int max_profit = knapsack(weight, profit, net, n);
+    printf("Maximum profit: %d\t", max_profit);
+}
+
