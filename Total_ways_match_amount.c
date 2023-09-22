@@ -1,3 +1,5 @@
+//Calculate total Number of ways matching amount using unlimited coins 
+
 #include<stdio.h>
 int total_number_of_ways(int coin[],int amount,int n)
 {
