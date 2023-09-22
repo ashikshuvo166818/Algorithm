@@ -16,7 +16,7 @@ void greedy_coin(int coin[],int amount,int n)
         i++;
         n--;
     }
-    printf("%d",count);
+    printf("Minimum COin need : %d",count);
 }
 void sorting(int coin[],int n)
 {
