@@ -53,13 +53,13 @@ int partition(int ash[],int a,int b)
     int pivot=ash[a];
     int i=a;
     int j=b;
-    while(i<=j)
+    while(i<j)
     {
-        while(i <= j && ash[i] <= pivot)
+        while(ash[i] <= pivot)
         {
             i++;
         }
-        while(i <= j && ash[j] > pivot)
+        while(ash[j] > pivot)
         {
             j--;
         }
